@@ -62,9 +62,8 @@ public class Raycast : MonoBehaviour
         if(inicioAtras == true)
         {
             totalTime -= Time.deltaTime;
-            minutes = (int)(totalTime / 60);
             seconds = (int)(totalTime % 60);
-            text.text = minutes.ToString() + ":" + seconds.ToString();
+            text.text = seconds.ToString() + "";
 
         }
         else
@@ -73,7 +72,7 @@ public class Raycast : MonoBehaviour
         }
         if (totalTime < 0)
         {
-            text.text = "00";
+            text.text = "0";
         }
 
 
