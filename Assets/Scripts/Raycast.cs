@@ -6,10 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class Raycast : MonoBehaviour
 {
+    private float stringTime;
+    public float totalTime;
+    public Text text;
+    private float minutes;
+    private float seconds;
+    public bool inicioAtras = false;
+    [SerializeField] GameObject timer; 
 
 
- [SerializeField] GameObject timer;   
-
+     
+    private void Start()
+    {
+        stringTime = totalTime;
+        
+    }
     void Update()
     {
 
@@ -26,7 +37,7 @@ public class Raycast : MonoBehaviour
                 {
                     Debug.Log("Level1");
                     timer.SetActive(true);
-                    GameManager.Instance.inicioAtras = true;
+                    inicioAtras = true;
                     Invoke("LoadLevel1", 5f);
                 }
 
@@ -34,7 +45,7 @@ public class Raycast : MonoBehaviour
                 {
                     Debug.Log("Level2");
                     timer.SetActive(true);
-                    GameManager.Instance.inicioAtras = true;
+                    inicioAtras = true;
                     Invoke("LoadLevel2", 5f);
                 }
 
@@ -42,10 +53,27 @@ public class Raycast : MonoBehaviour
                 {
                     Debug.Log("Level3");
                     timer.SetActive(true);
-                    GameManager.Instance.inicioAtras = true;
+                    inicioAtras = true;
                     Invoke("LoadLevel3", 5f);
                 }
             }
+        }
+
+        if(inicioAtras == true)
+        {
+            totalTime -= Time.deltaTime;
+            minutes = (int)(totalTime / 60);
+            seconds = (int)(totalTime % 60);
+            text.text = minutes.ToString() + ":" + seconds.ToString();
+
+        }
+        else
+        {
+            inicioAtras = false;
+        }
+        if (totalTime < 0)
+        {
+            text.text = "00";
         }
 
 
