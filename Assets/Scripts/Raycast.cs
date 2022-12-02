@@ -12,7 +12,7 @@ public class Raycast : MonoBehaviour
     private float minutes;
     private float seconds;
     public bool inicioAtras = false;
-    [SerializeField] GameObject timer; 
+    public GameObject timer; 
 
 
      
